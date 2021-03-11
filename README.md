@@ -1,0 +1,2 @@
+# Osadnicy
+Wstępne zatwierdzenie
