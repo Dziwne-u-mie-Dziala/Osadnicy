@@ -39,7 +39,7 @@ class Village
             ),
         );
     }
-    
+
     private function woodGain(int $deltaTime) : float
     {
         //liczymy zysk na godzine z wzoru poziom_drwala ^ 2
@@ -66,10 +66,10 @@ class Village
         $this->storage['iron'] += $this->ironGain($deltaTime);
     }
 
-    public function upgradeBuilding(string $builingName) : bool
+    public function upgradeBuilding(string $buildingName) : bool
     {
-        $currentLVL = $this->buildings[$builingName];
-        $cost = $this->upgradeCost[$builingName][$currentLVL+1];
+        $currentLVL = $this->buildings[$buildingName];
+        $cost = $this->upgradeCost[$buildingName][$currentLVL+1];
         foreach ($cost as $key => $value) {
             //key - nazwa surowca
             //value koszt surowca
@@ -81,7 +81,7 @@ class Village
             $this->storage[$key] -= $value;
         }
         //podnies lvl budynku o 1
-        $this->buildings[$builingName] += 1; 
+        $this->buildings[$buildingName] += 1; 
         return true;
     }
 }
