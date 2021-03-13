@@ -90,6 +90,19 @@ class Village
         return true;
     }
 
+    public function checkBuildingUpgrade(string $buildingName) : bool
+    {
+        $currentLVL = $this->buildings[$buildingName];
+        $cost = $this->upgradeCost[$buildingName][$currentLVL+1];
+        foreach ($cost as $key => $value) {
+            //key - nazwa surowca
+            //value koszt surowca
+            if($value > $this->storage[$key])
+                return false;
+        }
+        return true;
+    }
+
     public function showHourGain(string $resource) : string
     {
         switch($resource) {
