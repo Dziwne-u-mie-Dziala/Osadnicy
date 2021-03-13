@@ -3,21 +3,15 @@
     session_start();
     if(!isset($_SESSION['gm'])) // jeżeli nie ma w sesji naszej wioski
     {
-        echo "Tworzę nową gre...";
         $gm = new GameManager();
         $_SESSION['gm'] = $gm;
-        //reset czasu od ostatniego odświerzenia strony
-        $deltaTime = 0;
     } 
     else //mamy już wioskę w sesji - przywróć ją
     {
         $gm = $_SESSION['gm'];
-            
-        //ilosc sekund od ostatniego odświerzenia strony
-        $deltaTime = time() - $_SESSION['time'];
     }
     $v = $gm->v; //neizależnie cyz nowa gra czy załadowana
-    $v->gain($deltaTime);
+    $gm->sync(); //przelicz surowce
         
     if(isset($_REQUEST['action'])) 
     {
@@ -38,11 +32,7 @@
                 echo 'Nieprawidłowa zmienna "action"';
         }
     }
-
-
-    $_SESSION['time'] = time();
-        
-        
+    
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +42,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Osadnicy - gra przeglądarkowa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
@@ -111,12 +102,24 @@
         </main>
         <footer class="row">
             <div class="col-12">
-            <pre>
+            <table class="table table-bordered">
             <?php
-            var_dump($v);
-            var_dump($_REQUEST);
+            
+            foreach ($gm->l->getLog() as $entry) {
+                $timestamp = date('d.m.Y H:i:s', $entry['timestamp']);
+                $sender = $entry['sender'];
+                $message = $entry['message'];
+                $type = $entry['type'];
+                echo "<tr>";
+                echo "<td>$timestamp</td>";
+                echo "<td>$sender</td>";
+                echo "<td>$message</td>";
+                echo "<td>$type</td>";
+                echo "</tr>";
+            }
+            
             ?>
-            </pre>
+            </table>
             </div>
         </footer>
     </div>
