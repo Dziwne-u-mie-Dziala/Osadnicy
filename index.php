@@ -1,4 +1,5 @@
 <?php 
+
     require_once('./class/GameManager.class.php');
     session_start();
     if(!isset($_SESSION['gm'])) // jeżeli nie ma w sesji naszej wioski
@@ -8,9 +9,9 @@
     } 
     else //mamy już wioskę w sesji - przywróć ją
     {
-        $gm = $_SESSION['gm'];
+            $gm = $_SESSION['gm'];
     }
-    $v = $gm->v; //neizależnie cyz nowa gra czy załadowana
+    $v = $gm->v; //niezależnie cyz nowa gra czy załadowana
     $gm->sync(); //przelicz surowce
         
     if(isset($_REQUEST['action'])) 
@@ -31,9 +32,8 @@
             default:
                 echo 'Nieprawidłowa zmienna "action"';
         }
-    }
-    
-?>
+    }             
+    ?>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -103,7 +103,7 @@
         <footer class="row">
             <div class="col-12">
             <table class="table table-bordered">
-            <?php
+            <?php  
             
             foreach ($gm->l->getLog() as $entry) {
                 $timestamp = date('d.m.Y H:i:s', $entry['timestamp']);

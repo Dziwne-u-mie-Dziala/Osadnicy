@@ -10,7 +10,7 @@ class Village
     public function __construct($gameManger)
     {
         $this->gm = $gameManger;
-        $this->log('Utworzono nową wioskę', 'info');
+        $this->log('Tworzę nową wioskę', 'info');
         $this->buildings = array(
             'townHall' => 1,
             'woodcutter' => 1,
@@ -41,6 +41,7 @@ class Village
                 )
             ),
         );
+        $this->log('Utworzono nową wioskę', 'info');
     }
 
     private function woodGain(int $deltaTime) : float
@@ -52,7 +53,7 @@ class Village
         //zwracamy zysk w czasie $deltaTime
         return $perSecondGain * $deltaTime;
     }
-
+    
     private function ironGain(int $deltaTime) : float
     {
         //liczymy zysk na godzine z wzoru poziom_drwala ^ 2
@@ -153,7 +154,7 @@ class Village
                 break;
         }
     }
-    
+
     public function log(string $message, string $type)
     {
         $this->gm->l->log($message, 'village', $type);
