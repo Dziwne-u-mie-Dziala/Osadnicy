@@ -1,5 +1,4 @@
 <?php 
-
     require_once('./class/GameManager.class.php');
     session_start();
     if(!isset($_SESSION['gm'])) // jeżeli nie ma w sesji naszej wioski
@@ -9,7 +8,7 @@
     } 
     else //mamy już wioskę w sesji - przywróć ją
     {
-            $gm = $_SESSION['gm'];
+        $gm = $_SESSION['gm'];
     }
     $v = $gm->v; //niezależnie cyz nowa gra czy załadowana
     $gm->sync(); //przelicz surowce
@@ -19,21 +18,39 @@
         switch($_REQUEST['action'])
         {
             case 'upgradeBuilding':
-                if($v->upgradeBuilding($_REQUEST['building']))
+                $v->upgradeBuilding($_REQUEST['building']);
+            break;
+            case 'townHall':
+                $buildingList = $v->buildingList();
+                $mainContent = "<table class=\"table table-bordered\">";
+                $mainContent .= "<tr><th>Nazwa budyku</th><th>Poziom budynku</th><th>Koszt ulepszenia</th><th>Rozbudowa</th></tr>";
+                foreach($buildingList as $index => $building) 
                 {
-                    echo "Ulepszono budynek: ".$_REQUEST['building'];
+                    $name = $building['buildingName'];
+                    $level = $building['buildingLVL'];
+                    $upgradeCost = "";
+                    foreach($building['upgradeCost'] as $resource => $cost)
+                    {
+                        $upgradeCost .= "$resource: $cost,";
+                    }
+                    $mainContent .="<tr><td>$name</td><td>$level</td><td>$upgradeCost</td>";
+                    if($v->checkBuildingUpgrade($name))
+                        $mainContent .= 
+                            "<td><a href=\"index.php?action=upgradeBuilding&building=$name\">
+                            <button>Rozbuduj</button>
+                            </a></td>";
+                    else
+                        $mainContent .= "<td></td>";
+                        $mainContent .="</tr>";
                 }
-                else
-                {
-                    echo "Nie udało się ulepszyć budynku: ".$_REQUEST['building'];
-                }
-                    
+                $mainContent .= "</table>";
+                $mainContent .= "<a href=\"index.php\">Powrót</a>";
             break;
             default:
-                echo 'Nieprawidłowa zmienna "action"';
+                $gm->l->log("Nieprawidłowa zmienna \"action\"", "controller", "error");
         }
     }             
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -92,9 +109,15 @@
                     <button onclick="missingResourcesPopup()">Rozbuduj kopalnie żelaza</button>
                 <br>
                 <?php endif; ?>
+                <br>
+                <a href="index.php?action=townHall">Ratusz</a>
             </div>
             <div class="col-12 col-md-6">
+                <?php if(isset($mainContent)) : 
+                    echo $mainContent; ?>
+                <?php else : ?>
                 Widok wioski
+                <?php endif; ?>
             </div>
             <div class="col-12 col-md-3 border-left">
                 Lista wojska
@@ -103,7 +126,7 @@
         <footer class="row">
             <div class="col-12">
             <table class="table table-bordered">
-            <?php  
+            <?php
             
             foreach ($gm->l->getLog() as $entry) {
                 $timestamp = date('d.m.Y H:i:s', $entry['timestamp']);
@@ -123,6 +146,7 @@
             </div>
         </footer>
     </div>
+
     <script>
         function missingResourcesPopup() {
             window.alert("Brakuje zasobów");

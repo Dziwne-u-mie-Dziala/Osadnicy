@@ -44,6 +44,22 @@ class Village
         $this->log('Utworzono nową wioskę', 'info');
     }
 
+    public function buildingList() : array {
+        $buildingList = array();
+        foreach($this->buildings as $buildingName => $buildingLVL)
+        {
+            $building = array();
+            $building['buildingName'] = $buildingName;
+            $building['buildingLVL'] = $buildingLVL;
+            if(isset($this->upgradeCost[$buildingName][$buildingLVL+1] ))
+                $building['upgradeCost'] = $this->upgradeCost[$buildingName][$buildingLVL+1] ;
+            else 
+                $building['upgradeCost'] = array();
+            array_push($buildingList, $building);
+        }
+        return $buildingList;
+    }
+
     private function woodGain(int $deltaTime) : float
     {
         //liczymy zysk na godzine z wzoru poziom_drwala ^ 2
@@ -53,7 +69,7 @@ class Village
         //zwracamy zysk w czasie $deltaTime
         return $perSecondGain * $deltaTime;
     }
-    
+
     private function ironGain(int $deltaTime) : float
     {
         //liczymy zysk na godzine z wzoru poziom_drwala ^ 2
@@ -74,7 +90,7 @@ class Village
         if($this->storage['iron'] > $this->capacity('iron'))
             $this->storage['iron'] = $this->capacity('iron');
     }
-
+    
     public function upgradeBuilding(string $buildingName) : bool
     {
         $currentLVL = $this->buildings[$buildingName];
@@ -83,7 +99,10 @@ class Village
             //key - nazwa surowca
             //value koszt surowca
             if($value > $this->storage[$key])
+            {
+                $this->log("Nie udało się ulepszyć budynku - brak surowca: ".$key, "warning");
                 return false;
+            }
         }
         foreach ($cost as $key => $value) {
             //odejmujemy surowce na budynek
@@ -91,12 +110,15 @@ class Village
         }
         //podnies lvl budynku o 1
         $this->buildings[$buildingName] += 1; 
+        $this->log("Ulepszono budynek: ".$buildingName, "info");
         return true;
     }
 
     public function checkBuildingUpgrade(string $buildingName) : bool
     {
         $currentLVL = $this->buildings[$buildingName];
+        if(!isset($this->upgradeCost[$buildingName][$currentLVL+1]))
+            return false;
         $cost = $this->upgradeCost[$buildingName][$currentLVL+1];
         foreach ($cost as $key => $value) {
             //key - nazwa surowca
@@ -117,7 +139,7 @@ class Village
                 return $this->ironGain(3600);
             break;
             default:
-                echo "Nie ma takiego surowca!";
+                $this->log("Nie ma takiego surowca!", "error");
             break;
         }
     }
@@ -130,7 +152,8 @@ class Village
         }
         else
         {
-            return "Nie ma takiego surowca!";
+            $this->log("Nie ma takiego surowca!", "error");
+            return "";
         }
     }
 
