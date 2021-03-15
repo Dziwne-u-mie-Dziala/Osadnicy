@@ -21,17 +21,15 @@ class GameManager
         $this->t = time();
 
     }
-
     public function deltaTime() : int
     {
         return time() - $this->t;
     }
-    
     public function sync()
     {
         $this->s->check($this->t);
 
-        //na koniec
+        //na koniec synchronizuj z obecnym czasem
         $this->v->gain($this->deltaTime());
         $this->t = time();
         

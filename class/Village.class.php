@@ -80,7 +80,7 @@ class Village
         //zwracamy zysk w czasie $deltaTime
         return $perSecondGain * $deltaTime;
     }
-    
+
     private function ironGain(int $deltaTime) : float
     {
         //liczymy zysk na godzine z wzoru poziom_drwala ^ 2
@@ -120,7 +120,7 @@ class Village
             $this->storage[$key] -= $value;
         }
         //odwołanie do scheduelra
-        $this->gm->s->add(time()+300, 'Village', 'scheduledBuildingUpgrade', $buildingName);
+        $this->gm->s->add(time()+60, 'Village', 'scheduledBuildingUpgrade', $buildingName);
         
         return true;
     }
