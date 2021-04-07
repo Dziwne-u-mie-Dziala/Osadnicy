@@ -43,7 +43,7 @@ class Village
         );
         $this->log('Utworzono nową wioskę', 'info');
     }
-
+    
     public function buildingList() : array {
         $buildingList = array();
         foreach($this->buildings as $buildingName => $buildingLVL)
@@ -51,6 +51,7 @@ class Village
             $building = array();
             $building['buildingName'] = $buildingName;
             $building['buildingLVL'] = $buildingLVL;
+            $building['upgradePossible'] = $this->checkBuildingUpgrade($buildingName);
             if(isset($this->upgradeCost[$buildingName][$buildingLVL+1] ))
                 $building['upgradeCost'] = $this->upgradeCost[$buildingName][$buildingLVL+1] ;
             else 
