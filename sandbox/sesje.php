@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if( !isset($_SESSION['ostatniRefresh']) ) //sprawdź czy istnieje taka zmienna w sesji
@@ -18,4 +19,4 @@ else
     $_SESSION['ostatniRefresh'] = time();
 }
 
-?> 
+?>

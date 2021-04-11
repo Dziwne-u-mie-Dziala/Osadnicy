@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-04-07 13:42:54
+/* Smarty version 3.1.39, created on 2021-04-11 14:43:57
   from 'D:\Programy\xamp\htdocs\osadnicy\smarty\templates\townSquare.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_606d9abe6f7ae4_76680206',
+  'unifunc' => 'content_6072ef0d59cc86_97289532',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd7301e7199d764d33b3438c2441209dbe428fb21' => 
     array (
       0 => 'D:\\Programy\\xamp\\htdocs\\osadnicy\\smarty\\templates\\townSquare.tpl',
-      1 => 1617794575,
+      1 => 1618144487,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_606d9abe6f7ae4_76680206 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6072ef0d59cc86_97289532 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h3>Plac wojskowy</h3>
         <table class="table table-bordered">
             <tr>

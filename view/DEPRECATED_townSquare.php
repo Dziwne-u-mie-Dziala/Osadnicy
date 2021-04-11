@@ -60,5 +60,4 @@ if(is_array($armyList))
 }
 
 $mainContent .= "</table>";
-
 ?>

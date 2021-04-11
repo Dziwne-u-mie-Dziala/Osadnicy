@@ -69,15 +69,16 @@ $gm->sync(); //przelicz surowce
                 $smarty->assign('armyList', $gm->getArmyList());
                 $smarty->assign('mainContent', "townSquare.tpl");
             break;
-            default:   
+            default:  
                 $gm->l->log("Nieprawidłowa zmienna \"action\"", "controller", "error");
         }
     } 
-    
+
 $smarty->assign('wood', $v->showStorage("wood"));      
 $smarty->assign('iron', $v->showStorage("iron"));        
+$smarty->assign('food', $v->showStorage("food"));       
 
 $smarty->assign('logArray', $gm->l->getLog());
-$smarty->display('index.tpl');    
-
+$smarty->display('index.tpl');  
+   
 ?>

@@ -1,11 +1,11 @@
 <?php
 
 class Army {
-    public $location; // referencja do wioski
-    public $targetLocation; // cel armii - referencja do wioski
-    public $targetETA; // czas dotarcia do celu (UNIX timestamp)
+    public $location; //referencja do wioski
+    public $targetLocation; //cel armii - referencja do wioski
+    public $targetETA; //czas dotarcia do celu (UNIX timestamp)
 
-    public $spearmen;   // ilość jednostek
+    public $spearmen;   //ilość jednostek
     public $archers;    
     public $cavalry;
 

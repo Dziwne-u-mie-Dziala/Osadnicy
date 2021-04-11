@@ -1,2 +1,2 @@
-# Osadnicy
-Wstępne zatwierdzenie
+# genericBrowserGame
+ 

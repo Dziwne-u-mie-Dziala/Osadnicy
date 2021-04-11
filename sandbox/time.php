@@ -1,4 +1,5 @@
 <?php
+
 $teraz = time();
 echo "teraz jest: ".date('H:i:s d.m.Y', $teraz)."<br>";
 $losowaLiczbaSekund = rand(0,7200); //od 0 sekund do 2 godzin
@@ -13,4 +14,5 @@ $czasUlepszeniaBudynku = 2700; //45min
 echo "Rozpoczęto ulepszanie budynku na następny poziom<br>";
 $budynekGotowy = time() + $czasUlepszeniaBudynku;
 echo "Budynek będzie gotowy ".date('H:i:s d.m.Y', $budynekGotowy);
+
 ?>

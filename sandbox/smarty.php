@@ -1,4 +1,5 @@
 <?php
+
 require(__DIR__.'/../smarty/libs/Smarty.class.php');
 
 $smarty = new Smarty();
@@ -9,7 +10,7 @@ $smarty->setCacheDir(__DIR__.'/../smarty/cache');
 $smarty->setConfigDir(__DIR__.'/../smarty/configs');
 
 
-$name = "Bartek";
+$name = "Paweł";
 
 $smarty->assign('imie', $name); 
 

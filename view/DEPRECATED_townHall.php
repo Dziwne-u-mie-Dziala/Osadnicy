@@ -1,10 +1,10 @@
 <?php
+
 $buildingList = $v->buildingList();
 $mainContent = "<h3>Ratusz<h3>";
 $mainContent = "<table class=\"table table-bordered\">";
 $mainContent .= "<tr><th>Nazwa budyku</th><th>Poziom budynku</th>
                 <th>Produkcja/h / pojemność</th><th>Koszt ulepszenia</th><th>Rozbudowa</th></tr>";
-
 foreach($buildingList as $index => $building) 
 {
     $name = $building['buildingName'];
@@ -35,11 +35,9 @@ foreach($buildingList as $index => $building)
         $mainContent .= "<td></td>";
     $mainContent .="</tr>";
 }
-
 $mainContent .= "</table>";
 $mainContent .= "<h3>Aktywne budowy:</h3>";
 $tasks = $gm->s->getTasksByFunction("scheduledBuildingUpgrade"); //znajdz na liscie zadan wszystie dotyczace rozbudoqwy budynków
-
 foreach($tasks as $task)
 {
     $buildingName = $task['param'];

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-04-07 13:41:23
+/* Smarty version 3.1.39, created on 2021-04-11 14:43:50
   from 'D:\Programy\xamp\htdocs\osadnicy\smarty\templates\townHall.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_606d9a63d28438_82626044',
+  'unifunc' => 'content_6072ef064ad068_98475504',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a40ba0a7db62ec6b8721b1753f9f6fe6e387bbe2' => 
     array (
       0 => 'D:\\Programy\\xamp\\htdocs\\osadnicy\\smarty\\templates\\townHall.tpl',
-      1 => 1617794575,
+      1 => 1618144487,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_606d9a63d28438_82626044 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6072ef064ad068_98475504 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'D:\\Programy\\xamp\\htdocs\\osadnicy\\smarty\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h3>Ratusz</h3>

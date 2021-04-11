@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-04-07 13:39:35
+/* Smarty version 3.1.39, created on 2021-04-11 14:43:45
   from 'D:\Programy\xamp\htdocs\osadnicy\smarty\templates\village.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_606d99f7b69ac9_10182172',
+  'unifunc' => 'content_6072ef014e5632_66425033',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ca0f13f5f6a9a29c13b9987b0ef0902c7419488' => 
     array (
       0 => 'D:\\Programy\\xamp\\htdocs\\osadnicy\\smarty\\templates\\village.tpl',
-      1 => 1617794575,
+      1 => 1618144487,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,6 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_606d99f7b69ac9_10182172 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6072ef014e5632_66425033 (Smarty_Internal_Template $_smarty_tpl) {
 ?>Widok wioski placeholder<?php }
 }
